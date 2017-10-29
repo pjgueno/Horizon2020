@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+    <title>H2020 PJ</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet-src.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3-hexbin.v0.2.min.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/hexbin.js"></script>
+
+    
+</head>
+<body>
+<div id="map"></div>
+
+<form id="selector">
+  <input type="radio" name="switch" value="contribution" onclick="switcher(this.value)" checked> Contributions<br>
+  <input type="radio" name="switch" value="participation" onclick="switcher(this.value)"> Participations<br>
+    <input type="radio" name="switch" value="ratioconp" onclick="switcher(this.value)"> Mean Contributions<br>
+    <input type="radio" name="switch" value="coordination" onclick="switcher(this.value)"> Coordinations<br>
+    <input type="radio" name="switch" value="ratiocoop" onclick="switcher(this.value)"> Percent Coo/Par<br>
+</form> 
+
+<button type="button" id="reset" onclick="resetData()">Reset data</button>
+<button type="button" id="expli" onclick="show()">Show Manual</button>
+
+<div id="explication" onclick="hide()">Zoom in or zoom out, the gradient values are recalculated in order to show the max of each zoom step / each view.<br><br>You can switch between the different values by clicking on the radio button. <br><br>Click on an hexagon to open the table of the participants located in this very hexagon.<br><br>You can close the table by clicking on its header.<br><br>
+In the table click on the name of a participant to show the line chart corresponding to the radio button option.<br><br>
+You can close the line chart by clicking on it.<br><br>Click on the activity, the start date, the end date or the coordinator cells to filter the data with the corresponding value.<br><br>Click on the links in the project and topic cells to show the corresponding pages @CORDIS (some topic reference numbers may not have been published yet...).<br><br>Click above or under the link to filter the data with the project or the topic names.</div>
+
+
+<script src="js/map.js"></script>
+    
+    
+<div class ="legend" id="legend">
+<div id="legend-inner">
+<div class="gradient">
+</div>
+<div class="labels">
+<div class="label" style="bottom: 100%;" id ="limitmax"><b></b></div>
+<div class="label" style="bottom: 90%;" id ="limit9"><b></b></div>
+<div class="label" style="bottom: 80%;" id ="limit8"><b></b></div>
+<div class="label" style="bottom: 70%;" id ="limit7"><b></b></div>
+<div class="label" style="bottom: 60%;" id ="limit6"><b></b></div>       
+<div class="label" style="bottom: 50%;" id ="limit5"><b></b></div>
+<div class="label" style="bottom: 25%;" id ="limit4"><b></b></div>
+<div class="label" style="bottom: 10%;" id ="limit3"><b></b></div>
+<div class="label" style="bottom: 5%;" id ="limit2"><b></b></div>
+<div class="label" style="bottom: 1%;" id ="limit1"><b></b></div>
+<div class="label" style="bottom: 0%;" id ="limit0"><b></b></div>
+</div>
+</div>
+</div>
+      
+</body>
+</html>
